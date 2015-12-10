@@ -161,6 +161,8 @@ namespace ClangVSx
     // global options
     public static CVXRegistryItem<String> CommonArgs = new CVXRegistryItem<String>(() => CommonArgs, "");
 
+    public static CVXRegistryItem<String> LinkerArgs = new CVXRegistryItem<String>(() => LinkerArgs, "");
+
     public static CVXRegistryItem<String> TripleWin32 = new CVXRegistryItem<String>(() => TripleWin32,
                                                                                     "i686-pc-win32");
 

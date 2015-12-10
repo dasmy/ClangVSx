@@ -1576,6 +1576,8 @@ namespace ClangVSx
         linkProcess.StartInfo.FileName = LocationLIBExe;
       }
 
+      linkString.Append(CVXRegistry.LinkerArgs);
+
       // dump the linker cmdline
       if (BatchFileStream != null)
       {

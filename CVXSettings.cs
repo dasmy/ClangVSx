@@ -38,6 +38,7 @@ namespace ClangVSx
       cvxCOptMaxErr.Value = CVXRegistry.COptMaxErrToAbort.Value;
 
       cvxCommonArgs.Text = CVXRegistry.CommonArgs;
+      cvxLinkerArgs.Text = CVXRegistry.LinkerArgs;
       cvxTripleWin32.Text = CVXRegistry.TripleWin32;
       cvxTripleX64.Text = CVXRegistry.TripleX64;
       cvxTripleARM.Text = CVXRegistry.TripleARM;
@@ -84,6 +85,7 @@ namespace ClangVSx
         CVXRegistry.COptMaxErrToAbort.Value = (Int32)cvxCOptMaxErr.Value;
 
         CVXRegistry.CommonArgs.Value = cvxCommonArgs.Text;
+        CVXRegistry.LinkerArgs.Value = cvxLinkerArgs.Text;
         CVXRegistry.TripleWin32.Value = cvxTripleWin32.Text;
         CVXRegistry.TripleX64.Value = cvxTripleX64.Text;
         CVXRegistry.TripleARM.Value = cvxTripleARM.Text;
