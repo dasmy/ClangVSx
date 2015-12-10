@@ -69,7 +69,14 @@ namespace ClangVSx
       // read out current executables' locations
       LocationClangEXE = CVXRegistry.PathToClang;
       LocationLLVM_LINK_EXE = Path.GetDirectoryName(LocationClangEXE) + @"\llvm-link.exe";
+      if (!File.Exists(LocationLLVM_LINK_EXE)) {
+          LocationLLVM_LINK_EXE = Path.GetDirectoryName(LocationClangEXE) + @"\lld-link.exe";
+      }
+
       LocationLLVM_LLC_EXE = Path.GetDirectoryName(LocationClangEXE) + @"\llc.exe";
+      if (!File.Exists(LocationLLVM_LLC_EXE)) {
+        LocationLLVM_LLC_EXE = Path.GetDirectoryName(LocationClangEXE) + @"\clang.exe";
+      }
 
       // work out where the MS linker / lib tools are, Clang/LLVM doesn't have a linker presently
       // eg "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\"
