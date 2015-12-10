@@ -858,7 +858,7 @@ namespace ClangVSx
         {
           if (inc.Length > 0)
           {
-            uniqueDirs.Add(Path.GetFullPath(inc.Replace("\\", "/")));
+            uniqueDirs.Add(Path.GetFullPath(inc.Replace("\\", "/").Replace("\"", "")));
           }
         }
 
