@@ -396,8 +396,7 @@ namespace ClangVSx
       var perFileVCC = (VCCLCompilerTool)vcFC.Tool;
 
       // begin forming the command line string to send to Clang
-      compileString.Append('"' + vcFile.FullPath.Replace("/", "\\") + '"');
-      compileString.Append(defaultCompilerString);
+      compileString.Append('"' + vcFile.FullPath.Replace("/", "\\") + '"' + ' ');
 
       // sort out an output object file name
       String objectFileName = vcFC.Evaluate(perFileVCC.ObjectFile).Replace("/", "\\");
@@ -588,6 +587,10 @@ namespace ClangVSx
 
       // ask for warnings/errors in MSVC format
       compileString.Append("-fdiagnostics-format=msvc ");
+
+      // this includes "additional commands" from the settings dialog - have to be last to be able to override everything else
+      compileString.Append(defaultCompilerString);
+
 
       String fullObjectPath = objectFileName;
       if (!Path.IsPathRooted(fullObjectPath))
