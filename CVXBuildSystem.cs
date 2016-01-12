@@ -466,14 +466,30 @@ namespace ClangVSx
         compileString.Append("-fomit-frame-pointer ");
       }
 
+      warningLevelOption warnLevel;
+
+      try {
+          warnLevel = perFileVCC.WarningLevel;
+      }
+      catch (Exception e)
+      {
+          if (e.Message.Contains("EnableAllWarnings"))
+          {
+              // conversion failed because /Wall (aka EnableAllWarnings) is set which cannot be represented by the great warningLevelOption
+              warnLevel = warningLevelOption.warningLevel_4;
+          }
+          else
+              throw e;
+      }
+
       // arbitrarily turning a 5-point dial into a toggle switch :)
-      if (perFileVCC.WarningLevel == warningLevelOption.warningLevel_0 ||
-          perFileVCC.WarningLevel == warningLevelOption.warningLevel_1 ||
-          perFileVCC.WarningLevel == warningLevelOption.warningLevel_2)
+      if (warnLevel == warningLevelOption.warningLevel_0 ||
+          warnLevel == warningLevelOption.warningLevel_1 ||
+          warnLevel == warningLevelOption.warningLevel_2)
       {
         compileString.Append("-w "); // no warnings
       }
-      else if (perFileVCC.WarningLevel == warningLevelOption.warningLevel_4)
+      else if (warnLevel == warningLevelOption.warningLevel_4)
       {
         compileString.Append("-Wall --pedantic "); // all warnings
       }
